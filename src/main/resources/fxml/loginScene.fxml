@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="loginAnchor" prefHeight="433.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.logixity.apps.newpopular.LoginController">
+    <children>
+      <AnchorPane layoutX="40.0" layoutY="40.0" style="-fx-background-color: rgba(255,255,255,0.8);" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0">
+         <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="-Infinity" prefHeight="47.0" prefWidth="460.0" style="-fx-background-color: rgba(0,0,0,0.2); -fx-text-align:center; display:block;" text="New Popular Military Store" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <font>
+                        <Font size="32.0" />
+                    </font>
+                </Label>
+                <JFXTextField fx:id="uname" focusColor="#2196f3" layoutX="126.0" layoutY="78.0" prefHeight="33.0" prefWidth="209.0" promptText="Username">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </JFXTextField>
+                <JFXPasswordField fx:id="pass" layoutX="126.0" layoutY="130.0" prefHeight="33.0" prefWidth="209.0" promptText="Password">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </JFXPasswordField>
+                <JFXButton fx:id="loginBtn" buttonType="RAISED" defaultButton="true" layoutX="126.0" layoutY="184.0" onAction="#performLogin" prefHeight="37.0" prefWidth="100.0" ripplerFill="#2196f3" style="-fx-background-color: #B3E5FC;" text="Login">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="exitBtn" buttonType="RAISED" cancelButton="true" layoutX="235.0" layoutY="184.0" onAction="#exitApp" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #CFD8DC;" text="Exit">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </JFXButton>
+                <Label fx:id="statusMsg" alignment="CENTER" layoutX="136.0" layoutY="274.0" text="Authenticating Please Wait">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <JFXSpinner fx:id="statusSpinner" layoutX="214.0" layoutY="237.0" />
+            <Label text="Powered By" AnchorPane.bottomAnchor="23.0" AnchorPane.rightAnchor="12.0" />
+            <ImageView fitHeight="37.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="90.0">
+               <image>
+                  <Image url="@../img/logixity_logo.png" />
+               </image>
+            </ImageView>
+            <Label text="Logixity Studios" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="4.0" />
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>
