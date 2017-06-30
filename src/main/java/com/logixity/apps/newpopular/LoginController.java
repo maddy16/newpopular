@@ -20,9 +20,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
@@ -74,6 +76,7 @@ public class LoginController implements Initializable {
                     User user = (User) response;
 
                     showStatus("Welcome Mr. " + user.getFullName(), false);
+                    MainController.user = user;
 
                     Task<Void> sleeper = new Task<Void>() {
                         @Override
@@ -125,8 +128,13 @@ public class LoginController implements Initializable {
         stage.resizableProperty().setValue(Boolean.TRUE);
         stage.setMinWidth(765);
         stage.setMinHeight(520);
-        stage.setWidth(765);
-        stage.setHeight(520);
+        Screen screen = Screen.getPrimary();
+        Rectangle2D bounds = screen.getVisualBounds();
+        stage.setX(bounds.getMinX());
+        stage.setY(bounds.getMinY());
+        stage.setWidth(bounds.getWidth());
+        stage.setHeight(bounds.getHeight());
+        stage.setMaximized(true);
     }
 
     void showStatus(String msg, boolean loading) {

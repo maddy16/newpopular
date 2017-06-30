@@ -1,10 +1,13 @@
 package com.logixity.apps.newpopular;
 
+import java.io.IOException;
+import java.util.ResourceBundle;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 
@@ -30,6 +33,32 @@ public class Main extends Application {
     public static Stage getMainStage(){
         return mainStage;
     }
+    public static void loadScene(String sceneName, Object controller, AnchorPane contentPane, ResourceBundle bundle) throws IOException {
+        resetContentArea(contentPane);
+        FXMLLoader loader = null;
+        if (bundle == null) {
+            loader = new FXMLLoader(MainController.instance.getClass().getResource(sceneName));
+        } else {
+            loader = new FXMLLoader(MainController.instance.getClass().getResource(sceneName), bundle);
+        }
+        if (controller != null) {
+            loader.setController(controller);
+        }
+        Parent root = loader.load();
+        fitParentAnchor(root);
+        contentPane.getChildren().add(root);
+    }
+
+    public static void resetContentArea(AnchorPane contentPane) {
+        contentPane.getChildren().clear();
+    }
+
+    public static void fitParentAnchor(Parent root) {
+        AnchorPane.setBottomAnchor(root, 0.0);
+        AnchorPane.setLeftAnchor(root, 0.0);
+        AnchorPane.setTopAnchor(root, 0.0);
+        AnchorPane.setRightAnchor(root, 0.0);
+    }
 
     /**
      * The main() method is ignored in correctly deployed JavaFX application.
@@ -42,5 +71,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
 
 }
