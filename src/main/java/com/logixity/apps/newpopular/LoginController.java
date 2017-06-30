@@ -4,16 +4,15 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
-import com.sun.glass.ui.Application;
 import com.logixity.apps.newpopular.db.DatabaseHandler;
-import com.logixity.apps.newpopular.Main;
+import com.logixity.apps.newpopular.models.User;
+import java.awt.Color;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Timer;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.Event;
@@ -23,8 +22,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -51,7 +48,7 @@ public class LoginController implements Initializable {
     @FXML
     public void performLogin(ActionEvent event) throws IOException {
         showStatus("Authenticating... Please wait.", true);
-        final String user = uname.getText();
+        final String username = uname.getText();
         final String password = pass.getText();
 
         loginBtn.setDisable(true);
@@ -59,21 +56,47 @@ public class LoginController implements Initializable {
         pass.setDisable(true);
         final Task task = new Task() {
             @Override
-            protected Object call() throws Exception {
-                return db.isValidUser(user, password);
+            protected Object call() {
+                try {
+                    return db.isValidUser(username, password);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    return null;
+                }
+
             }
         };
         task.setOnSucceeded(new EventHandler() {
             @Override
             public void handle(Event event) {
-                boolean success = (boolean) task.getValue();
-                if (success) {
-                    try {
-                        showStatus("Welcome " + user, false);
-                        showNextScene("Scene");
-                    } catch (IOException ex) {
-                        System.err.println(ex.getMessage());
-                    }
+                Object response = task.getValue();
+                if (response != null) {
+                    User user = (User) response;
+
+                    showStatus("Welcome Mr. " + user.getFullName(), false);
+
+                    Task<Void> sleeper = new Task<Void>() {
+                        @Override
+                        protected Void call() throws Exception {
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                            }
+                            return null;
+                        }
+                    };
+                    sleeper.setOnSucceeded(new EventHandler() {
+                        @Override
+                        public void handle(Event event) {
+                            try {
+                                showNextScene("Scene");
+                            } catch (IOException ex) {
+                                System.err.println(ex.getMessage());
+                            }
+                        }
+                    });
+                    new Thread(sleeper).start();
+
                 } else {
                     loginBtn.setDisable(false);
                     uname.setDisable(false);
@@ -81,9 +104,12 @@ public class LoginController implements Initializable {
                     showStatus("Invalid Username / Pass", false);
 
                 }
+
             }
-        });
-        new Thread(task).start();
+        }
+        );
+        new Thread(task)
+                .start();
 
     }
 

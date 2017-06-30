@@ -2,6 +2,7 @@ package com.logixity.apps.newpopular.db;
 
 
 
+import com.logixity.apps.newpopular.models.User;
 import java.sql.*;
 import java.util.List;
 
@@ -28,9 +29,8 @@ public class DatabaseHandler {
         }
         
     }
-    public boolean isValidUser(String username, String password) throws SQLException {
+    public User isValidUser(String username, String password) throws SQLException {
         return Users.isValidUser(username, password);
     }
-
-
+    
 }
