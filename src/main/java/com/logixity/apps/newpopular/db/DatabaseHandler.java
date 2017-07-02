@@ -2,6 +2,7 @@ package com.logixity.apps.newpopular.db;
 
 
 
+import com.logixity.apps.newpopular.models.ItemType;
 import com.logixity.apps.newpopular.models.User;
 import java.sql.*;
 import java.util.List;
@@ -32,5 +33,19 @@ public class DatabaseHandler {
     public User isValidUser(String username, String password) throws SQLException {
         return Users.isValidUser(username, password);
     }
-    
+    public boolean addNewItemType(ItemType type) throws SQLException{
+        return ItemTypes.addNewItemType(type);
+    }
+    public List<ItemType> getAllTypes() throws SQLException{
+        return ItemTypes.getAllTypes();
+    }
+    public ItemType hasSameType(String typeName) throws SQLException{
+        return ItemTypes.hasSameType(typeName);
+    }
+    public boolean updateItemType(ItemType type) throws SQLException {
+        return ItemTypes.updateItemType(type);
+    }
+    public boolean deleteItemType(int typeId) throws SQLException {
+        return ItemTypes.deleteItemType(typeId);
+    }
 }

@@ -10,29 +10,29 @@
 
 <AnchorPane id="AnchorPane" prefHeight="573.0" prefWidth="624.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.logixity.apps.newpopular.MainController">
    <children>
-      <HBox alignment="CENTER" prefHeight="37.0" prefWidth="200.0" spacing="3.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox fx:id="navBar" alignment="CENTER" prefHeight="37.0" prefWidth="200.0" spacing="3.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton onAction="#ordersClicked" prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: #0097a7;" text="Orders" textFill="WHITE">
+            <JFXButton onAction="#ordersClicked" prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: #5C6BC0;" text="Orders" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: #0097a7;" text="Bills" textFill="WHITE">
+            <JFXButton prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: #5C6BC0;" text="Bills" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: #0097a7;" text="Stock" textFill="WHITE">
+            <JFXButton onAction="#stockBtnClicked" prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: #5C6BC0;" text="Stock" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: #0097a7;" text="Contacts" textFill="WHITE">
+            <JFXButton prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: #5C6BC0;" text="Contacts" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: #0097a7;" text="Expenses" textFill="WHITE">
+            <JFXButton prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: #5C6BC0;" text="Expenses" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -63,6 +63,6 @@
             </AnchorPane>
          </center>
       </BorderPane>
-      <AnchorPane fx:id="contentPane" layoutY="37.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="37.0" />
+      <AnchorPane fx:id="contentPane" layoutY="37.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="37.0" />
    </children>
 </AnchorPane>
