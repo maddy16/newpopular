@@ -13,3 +13,6 @@
 .hovered{
     
 }
+.custom-dropdown {
+    -fx-font: 16px "System";
+}
